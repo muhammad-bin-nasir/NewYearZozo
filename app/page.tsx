@@ -22,7 +22,6 @@ const OPENING_LINES = [
 ];
 
 // 2. THE PHOTOS
-// ⚠️ IF IMAGES ARE NOT UPDATING: Delete the '.next' folder in your project and restart.
 const PHOTO_JOURNEY = [
   {
     id: 1,
@@ -267,7 +266,7 @@ export default function Home() {
   };
 
 
-  // --- STAGE 4: BOX (FIXED COLOR) ---
+  // --- STAGE 4: BOX (NUCLEAR FIX) ---
   const BoxView = () => (
     <motion.div 
       key="box"
@@ -318,21 +317,27 @@ export default function Home() {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            // 🛑 FIX: Explicitly set background to white and text to black
-            className="max-w-2xl w-full bg-[#fdfbf7] p-8 md:p-12 rounded-xl shadow-2xl border-2 border-pink-200/50 relative overflow-hidden"
+            // We use inline style for background to be safe
+            style={{ backgroundColor: '#fdfbf7' }}
+            className="max-w-2xl w-full p-8 md:p-12 rounded-xl shadow-2xl border-2 border-pink-200/50 relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300"></div>
             <Sparkles className="absolute top-4 right-4 text-pink-300/30 w-20 h-20" />
             
             <div className="relative z-10 text-left">
-              <h2 className="text-3xl font-bold text-pink-600 mb-8 font-serif">Happy New Year, {NEXT_YEAR}</h2>
-              {/* 🛑 FIX: Added !text-gray-800 to force dark text */}
+              {/* Force header color */}
+              <h2 style={{ color: '#db2777' }} className="text-3xl font-bold mb-8 font-serif">
+                Happy New Year, {NEXT_YEAR}
+              </h2>
+              
+              {/* ☢️ NUCLEAR FIX: Inline style color: #000000 */}
               <div 
-                className="font-serif leading-loose text-lg !text-gray-800"
+                className="font-serif leading-loose text-lg"
+                style={{ color: '#000000' }} 
                 dangerouslySetInnerHTML={{ __html: THE_LETTER }} 
               />
                <div className="mt-12 flex justify-center">
-                  <Heart fill="currentColor" className="text-red-400 w-8 h-8" />
+                  <Heart fill="#f87171" className="text-red-400 w-8 h-8" />
                </div>
             </div>
           </motion.div>
